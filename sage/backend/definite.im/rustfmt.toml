@@ -1,0 +1,13 @@
+brace_style = "PreferSameLine"
+color = "Always"
+edition = "2021"
+fn_single_line = true
+fn_params_layout="Vertical"
+format_macro_matchers = true
+imports_layout = "Vertical"
+max_width = 200
+reorder_impl_items = true
+group_imports = "StdExternalCrate"
+trailing_comma = "Never"
+where_single_line = true
+

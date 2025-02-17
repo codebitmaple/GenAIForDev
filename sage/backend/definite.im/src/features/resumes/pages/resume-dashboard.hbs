@@ -1,0 +1,263 @@
+{{#> main}}
+
+    {{#if error_message}}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded shadow mb-16" role="alert">
+            <strong class="font-bold">Error!</strong>
+            <span class="block sm:inline">{{error_message}}</span>
+        </div>
+    {{/if}}
+
+    <div class="flex flex-col items-start justify-center">
+        <h1 class="text-[1rem] md:text-[2rem] text-black font-extrabold tracking-[-0.08em] leading-[0.9]">Step 1: Upload your résumé</h1>
+        <p class="mt-8 text-gray-900">
+        <ol class="pl-4 list-inside list-decimal">
+            <li class="list-item">Start by uploading your résumé here (let's call it a base résumé) for the next steps</li>
+            <li class="list-item">You can have only one base résumé--reuploads allowed</li>
+            <li class="list-item">Your latest base résumé will be used to generate the next optimized version and to generate cover letters</li>
+            <li class="list-item">This step parses and creates an ATS-friendly résumé</li>
+        </ol>
+        </p>
+        <a href="/resumes/resume/add" class="rounded shadow w-full md:w-fit mt-8 px-6 py-2 bg-gray-900 capitalize text-white text-base flex gap-2 justify-center items-center hover:bg-[#d04c00]">
+            <span class="material-symbols-outlined">
+                newspaper
+            </span>
+            {{#if resumes}}
+                <span class="capitalize">
+                    Replace your résumé
+                </span>
+            {{else}}
+                <span class="capitalize">
+                    Add your résumé
+                </span>
+            {{/if}}
+        </a>
+
+        {{#if resumes}}
+            <div class="overflow-x-auto w-full mt-8">
+                <table class="w-full table-auto border-collapse">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Name</th>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Created</th>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each resumes}}
+                            <tr class="bg-white">
+                                <td class="px-4 py-2 border-b text-gray-800 hover:font-bold hover:bg-gray-100 cursor-pointer">
+                                    <a href="/resumes/resume/{{to_hex _id}}">{{parsed_resume.name}}</a>
+                                </td>
+                                <td class="px-4 py-2 border-b text-gray-800">{{format_timestamp timestamp}}</td>
+                                <td class="px-4 py-2 border-b text-gray-800">{{kind}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        {{/if}}
+    </div>
+
+    <div class="flex flex-col items-start justify-center mt-24">
+        <h1 class="text-[1rem] md:text-[2rem] text-black font-extrabold tracking-[-0.08em] leading-[0.9]">Step 2: Bullet-proof your résumé</h1>
+        <p class="mt-8 text-gray-900">
+        <ol class="pl-4 list-inside list-decimal">
+            <li class="list-item">Review your résumé's notional ATS-score</li>
+            <li class="list-item">Analyze and rewrite your résumé</li>
+            <li class="list-item">Find and fix gaps in your résumé</li>
+            <li class="list-item">Rewrite work experience</li>
+            <li class="list-item">Integrate skills, projects, and work experiences</li>
+        </ol>
+        </p>
+        <a href="/resumes/bullet-proof" class="rounded shadow w-full md:w-fit mt-8 px-6 py-2 bg-gray-900 capitalize text-white text-base flex gap-2 justify-center items-center hover:bg-[#d04c00]">
+            <span class="material-symbols-outlined">
+                security
+            </span>
+            <span class="capitalize">
+                Bullet-proof Now
+            </span>
+        </a>
+        {{#if scores}}
+            <div class="overflow-x-auto w-full mt-8">
+                <table class="w-full table-auto border-collapse">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Persona</th>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Created</th>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">ATS Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each scores}}
+                            <tr class="bg-white">
+                                <!-- <td class="px-4 py-2 border-b text-gray-800">{{detail.persona}}</td> -->
+                                <td class="px-4 py-2 border-b text-gray-800 hover:font-bold hover:bg-gray-100 cursor-pointer">
+                                    <a href="/resumes/bullet-proof/score/{{to_hex _id}}">{{persona_label detail.persona}}</a>
+                                </td>
+                                <td class="px-4 py-2 border-b text-gray-800">{{format_timestamp timestamp}}</td>
+                                <td class="px-4 py-2 border-b text-gray-800">{{score}} of {{max_score}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        {{/if}}
+    </div>
+
+    <div class="flex flex-col items-start justify-center mt-24">
+        <h1 class="text-[1rem] md:text-[2rem] text-black font-extrabold tracking-[-0.08em] leading-[0.9]">Step 3: Upload job descriptions</h1>
+        <p class="mt-8 text-gray-900">
+        <ol class="pl-4 list-inside list-decimal">
+            <li class="list-item">Paste your target job description</li>
+            <li class="list-item">You can add one or more job descriptions</li>
+            <li class="list-item">You can pick a job description and use it to optimize your resume</li>
+        </ol>
+        </p>
+        <a href="/resumes/job-description/add" class="rounded shadow w-full md:w-fit mt-8 px-6 py-2 bg-gray-900 capitalize text-white text-base flex gap-2 justify-center items-center hover:bg-[#d04c00]">
+            <span class="material-symbols-outlined">
+                add
+            </span>
+            <span class="capitalize">
+                Add Job Description
+            </span>
+        </a>
+        {{#if job_descriptions}}
+            <div class="overflow-x-auto w-full mt-8">
+                <table class="w-full table-auto border-collapse">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Job Title</th>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Created</th>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Company</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each job_descriptions}}
+                            <tr class="bg-white">
+                                <td class="px-4 py-2 border-b text-gray-800">{{parsed_jd.metadata.job_title}}</td>
+                                <td class="px-4 py-2 border-b text-gray-800">{{format_timestamp timestamp}}</td>
+                                <td class="px-4 py-2 border-b text-gray-800">{{parsed_jd.metadata.company}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        {{/if}}
+    </div>
+
+    <div class="flex flex-col items-start justify-center mt-24">
+        <h1 class="text-[1rem] md:text-[2rem] text-black font-extrabold tracking-[-0.08em] leading-[0.9]">(Optional) Step 4: God Mode 👼🏼</h1>
+        <p class="mt-8 text-gray-900">
+        <ol class="pl-4 list-inside list-decimal">
+            <li class="list-item">Make the perfect résumé for the job</li>
+            <li class="list-item">Use AI creative writing to sculpt your résumé to match the job description</li>
+            <li class="list-item">Be extra cautios: You may make the shortlist without skills -- kind of scary</li>
+        </ol>
+        </p>
+        <a href="/resumes/cover-letter/add" class="rounded shadow w-full md:w-fit mt-8 px-6 py-2 bg-gray-900 capitalize text-white text-base flex gap-2 justify-center items-center hover:bg-[#d04c00]">
+            <span class="material-symbols-outlined">
+                bolt
+            </span>
+            <span class="capitalize">
+                Unleash God Mode
+            </span>
+        </a>
+        {{#if cover_letters}}
+            <div class="overflow-x-auto w-full mt-8">
+                <table class="w-full table-auto border-collapse">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Résumé title</th>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Job title</th>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Created</th>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700 w-48">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each cover_letters}}
+                            <tr class="bg-white">
+                                <td class="px-4 py-2 border-b text-gray-800">{{resume_title}}</td>
+                                <td class="px-4 py-2 border-b text-gray-800">{{job_title}}</td>
+                                <td class="px-4 py-2 border-b text-gray-800">{{company}}</td>
+                                <td class="px-4 py-2 border-b text-gray-800">{{format_timestamp timestamp}}</td>
+                                <td class="px-4 py-2 border-b text-gray-800 flex gap-2">
+                                    <button type="button" class="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm">
+                                        Align
+                                    </button>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        {{/if}}
+    </div>
+
+    <div class="flex flex-col items-start justify-center mt-24">
+        <h1 class="text-[1rem] md:text-[2rem] text-black font-extrabold tracking-[-0.08em] leading-[0.9]">Step 5: Generate a cover letter</h1>
+        <p class="mt-8 text-gray-900">
+        <ol class="pl-4 list-inside list-decimal">
+            <li class="list-item">Cover letters are extremly valuable for networking and referrals</li>
+            <li class="list-item">Some jobs demand it -- you'll know which ones</li>
+            <li class="list-item">Generate cover letters using a resume and a job description</li>
+            <li class="list-item">You can create more than one cover letter</li>
+        </ol>
+        </p>
+        <a href="/resumes/cover-letter/add" class="rounded shadow w-full md:w-fit mt-8 px-6 py-2 bg-gray-900 capitalize text-white text-base flex gap-2 justify-center items-center hover:bg-[#d04c00]">
+            <span class="material-symbols-outlined">
+                add
+            </span>
+            <span class="capitalize">
+                Generate Cover Letter
+            </span>
+        </a>
+        {{#if cover_letters}}
+            <div class="overflow-x-auto w-full mt-8">
+                <table class="w-full table-auto border-collapse">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Résumé title</th>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Job title</th>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700">Created</th>
+                            <th class="px-4 py-2 border-b-2 text-left font-semibold text-gray-700 w-48">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each cover_letters}}
+                            <tr class="bg-white">
+                                <td class="px-4 py-2 border-b text-gray-800">{{resume_title}}</td>
+                                <td class="px-4 py-2 border-b text-gray-800">{{job_title}}</td>
+                                <td class="px-4 py-2 border-b text-gray-800">{{company}}</td>
+                                <td class="px-4 py-2 border-b text-gray-800">{{format_timestamp timestamp}}</td>
+                                <td class="px-4 py-2 border-b text-gray-800 flex gap-2">
+                                    <button type="button" class="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm">
+                                        Align
+                                    </button>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        {{/if}}
+    </div>
+
+    <div class="flex flex-col items-start justify-center mt-24">
+        <h1 class="text-[1rem] md:text-[2rem] text-black font-extrabold tracking-[-0.08em] leading-[0.9]">Step 6: Unf*ck your brand</h1>
+        <p class="mt-8 text-gray-900">
+        <ol class="pl-4 list-inside list-decimal">
+            <li class="list-item">Want to be successful? Make your personal brand.</li>
+            <li class="list-item">Conquer LinkedIn in this next step</li>
+        </ol>
+        </p>
+        <a href="/resumes/cover-letter/add" class="rounded shadow w-full md:w-fit mt-8 px-6 py-2 bg-gray-900 capitalize text-white text-base flex gap-2 justify-center items-center hover:bg-[#d04c00]">
+            <span class="material-symbols-outlined">
+                reset_image
+            </span>
+            <span class="capitalize">
+                Help me unf*ck my brand
+            </span>
+        </a>
+    </div>
+
+{{/main}}

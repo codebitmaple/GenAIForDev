@@ -1,0 +1,60 @@
+# Use Amazon Linux as the base image and manually install Rust
+FROM public.ecr.aws/amazonlinux/amazonlinux:latest AS builder
+
+# Set the working directory inside the container
+WORKDIR /usr/src/app
+
+# Install necessary dependencies and use --skip-broken to avoid conflicts
+RUN yum -y update && \
+    yum -y install gcc openssl-devel make git tar which --skip-broken
+
+# Install Rust using rustup
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+# Add Rust to PATH
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+# Copy the entire project to the container (including Rust libs, assets, etc.)
+COPY . .
+# COPY definite.im/.env.prod definite.im/.env.prod
+# COPY definite.im/ .
+
+# Build the Rust application in release mode
+RUN cargo build --release
+
+# Verify that the assets directory exists
+RUN ls -l definite.im/assets
+
+# Use Amazon Linux as the base image for the final executable
+FROM public.ecr.aws/amazonlinux/amazonlinux:latest
+
+# Install OpenSSL and ca-certificates in the final stage
+RUN yum -y update && \
+    yum -y install gcc openssl-devel make git tar which findutils --skip-broken
+
+# Set the working directory for the final image
+WORKDIR /usr/src/app
+
+# Copy the compiled binary from the builder stage (it's in the root-level target/release)
+COPY --from=builder /usr/src/app/target/release/definite .
+
+# Copy the assets directory from the builder stage
+COPY --from=builder /usr/src/app/definite.im/assets ./assets
+
+# Copy env from the builder stage
+COPY --from=builder /usr/src/app/definite.im/.env.prod ./.env.prod
+COPY --from=builder /usr/src/app/definite.im/src/ ./src/
+
+# verify that the .env file exists
+RUN ls -l ./.env.prod
+RUN find ./src -name "*.hbs"
+
+# Ensure correct permissions for the assets directory
+RUN chmod -R 755 ./assets
+RUN chmod -R 755 ./src
+
+# Expose the application port (adjust as needed)
+EXPOSE 9191
+
+# Run the Rust binary
+CMD ["./definite"]

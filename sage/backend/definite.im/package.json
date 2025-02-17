@@ -1,0 +1,14 @@
+{
+	"name": "definite.im",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"build-css": "npx tailwindcss -i ./assets/styles/input.css -o ./assets/styles/output.css --watch"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"tailwindcss": "^3.4.16"
+	}
+}

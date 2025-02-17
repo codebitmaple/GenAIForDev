@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Definite - {{title}}</title>
+        <meta property="og:title" content="Definite - {{title}}">
+        <meta property="og:description" content="Tired of great jobs slipping through your fingers? Fix your resume and cover letter with our no-BS tool that tailors your story to the job. Get noticed, get hired.">
+        <meta property="og:url" content="{{page_url}}">
+        <!-- HTML Meta Tags -->
+        <meta name="description" content="Tired of great jobs slipping through your fingers? Fix your resume and cover letter with our no-BS tool that tailors your story to the job. Get noticed, get hired.">
+        <!-- Facebook Meta Tags -->
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://definite.im/assets/images/og-image.jpg">
+        <!-- Twitter Meta Tags -->
+        <meta property="twitter:domain" content="definite.im">
+        <meta property="twitter:url" content="https://definite.im/">
+        <meta name="twitter:title" content="Definite - Welcome to Definite">
+        <meta name="twitter:description" content="Tired of great jobs slipping through your fingers? Fix your resume and cover letter with our no-BS tool that tailors your story to the job. Get noticed, get hired.">
+        <meta name="twitter:image" content="https://definite.im/assets/images/og-image.jpg">
+        <meta name="twitter:card" content="summary" />
+        <meta property="og:site_name" content="Definite" />
+        <meta property="og:title" content="Definite - {{title}}" />
+        <meta property="og:description" content="Accelerate your tech career with LeaderHub. Offering tailored mentorship, mock interviews, and weekly webinars for software engineers, solution architects, engineering managers, and product managers. Get expert insights and resources to achieve your career goals at leading tech firms." />
+        <meta property="og:image:width" content="1500" />
+        <meta property="og:image:height" content="1124" />
+        <meta itemprop="name" content="Definite" />
+        <meta itemprop="url" content="{{page_url}}" />
+        <meta itemprop="description" content="Tired of great jobs slipping through your fingers? Fix your resume and cover letter with our no-BS tool that tailors your story to the job. Get noticed, get hired." />
+        <meta itemprop="thumbnailUrl" content="https://definite.im/assets/images/og-image.jpg" />
+        <meta itemprop="image" content="https://definite.im/assets/images/og-image.jpg" />
+        <link rel="image_src" href="https://definite.im/assets/images/og-image.jpg" />
+
+
+        <link href="/assets/styles/output.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <link rel="icon" type="image/svg+xml" href="/assets/images/ico.png">
+        <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+        <script src="/assets/scripts/flowbite.min.js"></script>
+        <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=6769d7e51bf8f7001aa8a118&product=sop' async='async'></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-5851VTHVQR"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'G-5851VTHVQR');
+        </script>
+    </head>
+
+    <body class="font-body bg-white">
+        <div class="bg-brand-vibrant-gold text-black text-center p-2">
+            <p class="text-sm">🚨 Definite is in beta right now. Expect bugs and errors.</p>
+        </div>
+        {{> header}}
+        <main class="max-w-screen-lg min-h-screen mx-auto mt-4 mb-16 p-4 md:p-0 md:mt-16">
+            {{> @partial-block}}
+        </main>
+        {{> footer}}
+    </body>
+
+    <script>
+        document.querySelector('form').addEventListener('htmx:beforeRequest', function () {
+            document.querySelectorAll('.disable-on-submit').forEach(function (button) {
+                button.disabled = true;
+            });
+        });
+
+        document.querySelector('form').addEventListener('htmx:afterRequest', function () {
+            document.querySelectorAll('.disable-on-submit').forEach(function (button) {
+                button.disabled = false;
+            });
+        });
+    </script>
+
+</html>

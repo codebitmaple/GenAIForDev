@@ -1,0 +1,54 @@
+<header>
+    <nav class="start-0 w-full bg-black">
+        <div class="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto px-2 py-2 md:px-0 md:py-4">
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img id="logo-image" src="/assets/images/logo-wide-w.png" class="w-24 md:w-32 h-auto " alt="Definite Logo" />
+            </a>
+            <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                {{#if user_authenticated}}
+                    <button type="button" class="flex text-sm bg-gray-600 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                        <span class="sr-only">Open user menu</span>
+                        <img class="w-8 h-8 rounded-full" src="/auth/profile-pic" alt="user photo">
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+                        <div class="px-4 py-3">
+                            <span class="block text-sm text-gray-700 dark:text-white">{{user_full_name}}</span>
+                            <span class="block text-sm  text-gray-400 truncate dark:text-gray-500">{{user_email}}</span>
+                        </div>
+                        <div>
+                            <a href="/auth/logout/{{user_key}}" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Logout</a>
+                        </div>
+                    </div>
+                {{else}}
+                    <a id="login-link" href="/auth/google" class="text-white p-1 hover:border-b-2 hover:border-white font-bold text-sm md:text-base">Login with Google</a>
+                {{/if}}
+                <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center py-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+            </div>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
+                <ul class="flex flex-col text-sm font-medium p-4 md:p-0 mt-4 border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+                    <li>
+                        <a href="/resumes" class="text-white hover:text-gray-200">Résumés</a>
+                    </li>
+                    <li>
+                        <a href="/referrals" class="text-white hover:text-gray-200">Referrals</a>
+                    </li>
+                    <li>
+                        <a href="/stories" class="text-white hover:text-gray-200">Stories</a>
+                    </li>
+                    <li>
+                        <a href="/problems" class="text-white hover:text-gray-200">Problems</a>
+                    </li>
+                    <li>
+                        <a href="/branding" class="text-white hover:text-gray-200">Social</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

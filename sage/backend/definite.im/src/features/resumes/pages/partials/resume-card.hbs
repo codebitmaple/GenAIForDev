@@ -1,0 +1,384 @@
+<div class="p-4 bg-white shadow rounded">
+
+    <!-- Header / Basic Info -->
+    <div class="mb-4">
+        <!-- Full Name -->
+        <h1 class="text-xl font-bold text-gray-900 uppercase">{{resume.name}}</h1>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="mb-4">
+        <div class="flex gap-2 space-y-1 text-sm text-gray-700 justify-start items-baseline">
+            {{#if resume.contact.phone}}
+                <span>{{resume.contact.phone}}</span>
+            {{/if}}
+            {{#if resume.contact.email}}
+                <span>&bullet; {{resume.contact.email}}</span>
+            {{/if}}
+            {{#if resume.contact.linkedin}}
+                <span>&bullet; {{resume.contact.linkedin}}</span>
+            {{/if}}
+            {{#if resume.contact.github}}
+                <span>&bullet; {{resume.contact.github}}</span>
+            {{/if}}
+            {{#if resume.contact.website}}
+                <span>&bullet; {{resume.contact.website}}</span>
+            {{/if}}
+            {{#if resume.contact.twitter}}
+                <span>&bullet; {{resume.contact.twitter}}</span>
+            {{/if}}
+        </div>
+    </div>
+
+    <!-- Summary -->
+    {{#if resume.summary}}
+        <div class="mb-4">
+            <h2 class="font-semibold text-gray-800 mb-1">Professional Summary</h2>
+            <p class="text-sm text-gray-700 whitespace-pre-wrap">{{resume.summary}}</p>
+        </div>
+    {{/if}}
+
+    <!-- Work Experience -->
+    <div class="mb-4">
+        <h2 class="font-semibold text-gray-800 mb-1">Work Experience</h2>
+        {{#each resume.work_experience}}
+            <div class="mb-2 p-2 bg-gray-50 rounded">
+                <div class="text-sm font-medium text-gray-900">{{title}}, {{company}}</div>
+                {{#if location}}
+                    <div class="text-xs text-gray-600">{{location}}</div>
+                {{/if}}
+                <div class="text-xs text-gray-600">Dates: {{dates}}</div>
+                {{#if responsibilities}}
+                    <ul class="list-disc list-inside mt-1 space-y-1">
+                        {{#each responsibilities}}
+                            <li class="text-xs text-gray-700 ml-4">{{this}}</li>
+                        {{/each}}
+                    </ul>
+                {{/if}}
+            </div>
+        {{/each}}
+    </div>
+
+    <!-- Projects -->
+    {{#if resume.projects}}
+        <div class="mb-4">
+            <h2 class="font-semibold text-gray-800 mb-1">Projects</h2>
+            {{#each resume.projects}}
+                <div class="mb-2 p-2 bg-gray-50 rounded">
+                    <div class="text-sm font-medium text-gray-900">{{name}}</div>
+                    {{#if description}}
+                        <p class="text-xs text-gray-600">{{description}}</p>
+                    {{/if}}
+                    {{#if dates}}
+                        <p class="text-xs text-gray-600">Dates: {{dates}}</p>
+                    {{/if}}
+                    {{#if technologies}}
+                        <p class="text-xs text-gray-600">
+                            Tech Stack:
+                            {{#each technologies}}
+                                <span>{{this}}</span>
+                            {{/each}}
+                        </p>
+                    {{/if}}
+                    {{#if link}}
+                        <a href="{{link}}" class="text-xs text-blue-600 underline">Project Link</a>
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+
+    <!-- Skills -->
+    {{#if resume.skills}}
+        <div class="mb-4">
+            <h2 class="font-semibold text-gray-800 mb-1">Skills</h2>
+            <div class="space-y-2 text-sm">
+                {{#if resume.skills.technical}}
+                    <div>
+                        <span class="font-medium">Technical:</span>
+                        <span class="text-gray-700">
+                            {{#each resume.skills.technical}}
+                                <span>{{this}}</span>
+                            {{/each}}
+                        </span>
+                    </div>
+                {{/if}}
+
+                {{#if resume.skills.soft_skills}}
+                    <div>
+                        <span class="font-medium">Soft Skills:</span>
+                        <span class="text-gray-700">
+                            {{#each resume.skills.soft_skills}}
+                                <span>{{this}}</span>
+                            {{/each}}
+                        </span>
+                    </div>
+                {{/if}}
+
+                {{#if resume.skills.other_skills}}
+                    <div>
+                        <span class="font-medium">Other:</span>
+                        <span class="text-gray-700">
+                            {{#each resume.skills.other_skills}}
+                                <span>{{this}}</span>
+                            {{/each}}
+                        </span>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    {{/if}}
+
+    <!-- Education -->
+    <div class="mb-4">
+        <h2 class="font-semibold text-gray-800 mb-1">Education</h2>
+        {{#each resume.education}}
+            <div class="mb-2 p-2 bg-gray-50 rounded">
+                <div class="text-sm font-medium text-gray-900">{{institution}}</div>
+                <div class="flex gap-2 text-xs text-gray-600">
+                    {{#if location}}
+                        <div class="">{{location}}</div>
+                    {{/if}}
+                    {{#if degree}}
+                        <div class="">&bullet; {{degree}}</div>
+                    {{/if}}
+                    {{#if field_of_study}}
+                        <div class="">&bullet; {{field_of_study}}</div>
+                    {{/if}}
+                    {{#if gpa}}
+                        <div class="">&bullet; {{gpa}}</div>
+                    {{/if}}
+                    {{#if dates}}
+                        <div class="">&bullet; {{dates}}</div>
+                    {{/if}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+
+    <!-- Certifications -->
+    {{#if resume.certifications}}
+        <div class="mb-4">
+            <h2 class="font-semibold text-gray-800 mb-1">Certifications</h2>
+            <ul class="list-disc list-inside mt-1 space-y-1">
+                {{#each resume.certifications}}
+                    <li class="text-xs text-gray-700 ml-4">
+                        {{#if name}}
+                            <span class="text-xs text-gray-600">{{name}}</span>
+                        {{/if}}
+                        {{#if issuer}}
+                            <span class="text-xs text-gray-600">&bullet; {{issuer}}</span>
+                        {{/if}}
+                        {{#if date}}
+                            <span class="text-xs text-gray-600">&bullet; {{date}}</span>
+                        {{/if}}
+                        {{#if link}}
+                            <span>
+                                &bullet; <a href="{{link}}" class="text-xs text-blue-600 underline">View Certificate</a>
+                            </span>
+                        {{/if}}
+                    </li>
+                {{/each}}
+            </ul>
+
+        </div>
+    {{/if}}
+
+    <!-- Achievements -->
+    {{#if resume.achievements}}
+        <div class="mb-4">
+            <h2 class="font-semibold text-gray-800 mb-1">Achievements</h2>
+            {{#each resume.achievements}}
+                <div class="mb-2 p-2 bg-gray-50 rounded">
+                    <div class="text-sm font-medium text-gray-900">{{title}}</div>
+                    {{#if details}}
+                        <p class="text-xs text-gray-600">{{details}}</p>
+                    {{/if}}
+                    {{#if date}}
+                        <p class="text-xs text-gray-600">Date: {{date}}</p>
+                    {{/if}}
+                    {{#if link}}
+                        <a href="{{link}}" class="text-xs text-blue-600 underline">More Info</a>
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+
+    <!-- Publications -->
+    {{#if resume.publications}}
+        <div class="mb-4">
+            <h2 class="font-semibold text-gray-800 mb-1">Publications</h2>
+            {{#each resume.publications}}
+                <div class="mb-2 p-2 bg-gray-50 rounded">
+                    {{#if title}}
+                        <div class="text-sm font-medium text-gray-900">{{title}}</div>
+                    {{/if}}
+                    {{#if journal_or_conference}}
+                        <p class="text-xs text-gray-600">Published in: {{journal_or_conference}}</p>
+                    {{/if}}
+                    {{#if date}}
+                        <p class="text-xs text-gray-600">Date: {{date}}</p>
+                    {{/if}}
+                    {{#if link}}
+                        <a href="{{link}}" class="text-xs text-blue-600 underline">View Publication</a>
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+
+    <!-- Volunteer Experience -->
+    {{#if resume.volunteer_experience}}
+        <div class="mb-4">
+            <h2 class="font-semibold text-gray-800 mb-1">Volunteer Experience</h2>
+            {{#each resume.volunteer_experience}}
+                <div class="mb-2 p-2 bg-gray-50 rounded">
+                    {{#if organization}}
+                        <div class="text-sm font-medium text-gray-900">{{organization}}</div>
+                    {{/if}}
+                    {{#if role}}
+                        <p class="text-xs text-gray-600">{{role}}</p>
+                    {{/if}}
+                    {{#if dates}}
+                        <p class="text-xs text-gray-600">Dates: {{dates}}</p>
+                    {{/if}}
+                    {{#if description}}
+                        <p class="text-xs text-gray-600">{{description}}</p>
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+
+    <!-- Interests & Hobbies -->
+    {{#if resume.interests_hobbies}}
+        <div class="mb-4">
+            <h2 class="font-semibold text-gray-800 mb-1">Interests / Hobbies</h2>
+            <ul class="list-disc list-inside text-sm text-gray-700">
+                {{#each resume.interests_hobbies}}
+                    <li class="ml-4">{{this}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    {{/if}}
+
+    <!-- Keywords -->
+    <!-- {{#if resume.keywords}}
+        <div class="mb-4">
+            <h2 class="font-semibold text-gray-800 mb-1">Keywords</h2>
+            <ul class="text-sm text-gray-700">
+                {{#each resume.keywords}}
+                    <li>
+                        <span class="font-medium">{{keyword}}:</span>
+                        <span class="text-gray-600">{{context}}</span>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    {{/if}} -->
+
+    <!-- Blogs -->
+    {{#if resume.blogs}}
+        <div class="mb-4">
+            <h2 class="font-semibold text-gray-800 mb-1">Blogs</h2>
+            {{#each resume.blogs}}
+                <div class="mb-2 p-2 bg-gray-50 rounded">
+                    <div class="text-sm font-medium text-gray-900">{{title}}</div>
+                    {{#if date}}
+                        <p class="text-xs text-gray-600">Date: {{date}}</p>
+                    {{/if}}
+                    {{#if link}}
+                        <a href="{{link}}" class="text-xs text-blue-600 underline">Visit Blog</a>
+                    {{/if}}
+                    {{#if summary}}
+                        <p class="text-xs text-gray-600 mt-1">{{summary}}</p>
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+
+    <!-- Open Source Contributions -->
+    {{#if resume.open_source_contributions}}
+        <div class="mb-4">
+            <h2 class="font-semibold text-gray-800 mb-1">Open Source Contributions</h2>
+            {{#each resume.open_source_contributions}}
+                <div class="mb-2 p-2 bg-gray-50 rounded">
+                    <div class="text-sm font-medium text-gray-900">{{project_name}}</div>
+                    {{#if dates}}
+                        <p class="text-xs text-gray-600">Dates: {{dates}}</p>
+                    {{/if}}
+                    {{#if description}}
+                        <p class="text-xs text-gray-600">{{description}}</p>
+                    {{/if}}
+                    {{#if technologies}}
+                        <p class="text-xs text-gray-600">
+                            Tech Stack:
+                            {{#each technologies}}
+                                <span>{{this}}</span>
+                            {{/each}}
+                        </p>
+                    {{/if}}
+                    {{#if link}}
+                        <a href="{{link}}" class="text-xs text-blue-600 underline">Project Link</a>
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+
+    <!-- Authoring -->
+    {{#if resume.authoring}}
+        <div class="mb-4">
+            <h2 class="font-semibold text-gray-800 mb-1">Authoring</h2>
+            {{#each resume.authoring}}
+                <div class="mb-2 p-2 bg-gray-50 rounded">
+                    <div class="text-sm font-medium text-gray-900">{{title}}</div>
+                    {{#if date}}
+                        <p class="text-xs text-gray-600">Date: {{date}}</p>
+                    {{/if}}
+                    {{#if publisher}}
+                        <p class="text-xs text-gray-600">Publisher: {{publisher}}</p>
+                    {{/if}}
+                    {{#if link}}
+                        <a href="{{link}}" class="text-xs text-blue-600 underline">View Details</a>
+                    {{/if}}
+                    {{#if description}}
+                        <p class="text-xs text-gray-600 mt-1">{{description}}</p>
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+
+    <!-- Patents -->
+    {{#if resume.patents}}
+        <div class="mb-4">
+            <h2 class="font-semibold text-gray-800 mb-1">Patents</h2>
+            {{#each resume.patents}}
+                <div class="mb-2 p-2 bg-gray-50 rounded">
+                    <div class="text-sm font-medium text-gray-900">{{title}}</div>
+                    {{#if patent_number}}
+                        <p class="text-xs text-gray-600">Patent No: {{patent_number}}</p>
+                    {{/if}}
+                    {{#if date}}
+                        <p class="text-xs text-gray-600">Date: {{date}}</p>
+                    {{/if}}
+                    {{#if link}}
+                        <a href="{{link}}" class="text-xs text-blue-600 underline">View Patent</a>
+                    {{/if}}
+                    {{#if inventors}}
+                        <p class="text-xs text-gray-600">
+                            Inventors:
+                            {{#each inventors}}
+                                <span>{{this}}</span>
+                            {{/each}}
+                        </p>
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+
+</div>

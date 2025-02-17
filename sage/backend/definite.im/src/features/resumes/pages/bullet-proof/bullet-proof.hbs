@@ -1,0 +1,50 @@
+{{#> main}}
+    <div class="mb-8">
+        <a href="/resumes/dashboard" class="flex gap-2 items-center text-gray-500 text-[16px] font-bold">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <span>Back to Dashboard</span>
+        </a>
+    </div>
+    <div class="flex gap-4 pb-4">
+        <form method="post" hx-post="/resumes/bullet-proof/score" hx-target="#loading" hx-indicator="#loading" hx-swap="outerHTML">
+            <input type="hidden" name="resume_id" value="{{resume_id}}">
+            <button type="submit" class="px-4 py-2 bg-black text-white text-sm rounded shadow hover:bg-[#d04c00] flex gap-2 items-center disabled:opacity-50 disable-on-submit">
+                <span class="material-symbols-outlined">
+                    credit_score
+                </span>
+                <span>Find ATS Score and Gaps in Resume</span>
+            </button>
+        </form>
+        <form method="post" hx-post="/resumes/bullet-proof/optimize">
+            <input type="hidden" name="resume_id" value="{{resume_id}}">
+            <button type="submit" class="px-4 py-2 bg-black text-white text-sm rounded shadow hover:bg-[#d04c00] flex gap-2 items-center disabled:opacity-50 disable-on-submit">
+                <span class="material-symbols-outlined">
+                    work
+                </span>
+                <span>Optimize Work Experience</span>
+            </button>
+        </form>
+        <form method="post" hx-post="/resumes/bullet-proof/integrate">
+            <input type="hidden" name="resume_id" value="{{resume_id}}">
+            <button type="submit" class="px-4 py-2 bg-black text-white text-sm rounded shadow hover:bg-[#d04c00] flex gap-2 items-center disabled:opacity-50 disable-on-submit">
+                <span class="material-symbols-outlined">
+                    integration_instructions
+                </span>
+                <span>Integrate Skills and Work Experience</span>
+            </button>
+        </form>
+    </div>
+
+    <div class="flex justify-center">
+        <div id="loading" class="htmx-indicator">
+            <div class="flex flex-col justify-center items-center gap-4">
+                <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+                <div class="text-center text-gray-900 font-semibold">On it. Working..</div>
+            </div>
+        </div>
+    </div>
+
+    {{> resume-card}}
+
+
+{{/main}}

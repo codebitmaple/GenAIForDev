@@ -1,0 +1,16 @@
+{{#>main}}
+    <div class="mb-8">
+        <a href="/resumes/dashboard" class="flex gap-2 items-center text-gray-500 text-[16px] font-bold">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <span>Back to Dashboard</span>
+        </a>
+    </div>
+    {{#if error_message}}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded shadow mb-16" role="alert">
+            <strong class="font-bold">Error!</strong>
+            <span class="block sm:inline">{{error_message}}</span>
+        </div>
+    {{else}}
+        {{> resume-card}}
+    {{/if}}
+{{/main}}

@@ -1,0 +1,112 @@
+{{#>main}}
+    <div class="mb-8">
+        <a href="/resumes/dashboard" class="flex gap-2 items-center text-gray-500 text-[16px] font-bold">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <span>Back to Dashboard</span>
+        </a>
+    </div>
+    <div class="p-4 bg-white shadow-md rounded-lg">
+        <!-- Title -->
+        {{#if (is_greater_than progressBarPercent 90.0)}}
+            <div>
+                <h1 class="text-[2rem] md:text-[3rem] text-black font-extrabold tracking-[-0.08em] leading-[0.9]">OMG! That's quite a resume you got here</h1>
+                <span class="block sm:inline">Your resume is almost perfect. You can still improve it by following the suggestions below.</span>
+            </div>
+        {{else}}
+            <div>
+                <h1 class="text-[2rem] md:text-[3rem] text-black font-extrabold tracking-[-0.08em] leading-[0.9]">Found Bullet Marks</h1>
+                <p class="text-sm text-gray-500 mt-1">We found the following gaps in your resume. The score is not perfect, but, hey! who get its right the first time?</p>
+            </div>
+        {{/if}}
+        <p class="text-sm text-gray-500 mt-4">Persona: <span class="font-medium">{{score.detail.persona}}</span></p>
+
+        <!-- Overall Score -->
+        <div class="mt-4">
+            <h2 class="text-lg font-semibold text-gray-800">Overall Score</h2>
+            <div class="w-full bg-gray-200 rounded-full h-4 mt-2">
+                <!-- Instead of inline math, use a precomputed field or helper -->
+                <div class="bg-blue-500 h-4 rounded-full" style="width: {{progressBarPercent}}%;">
+                </div>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">
+                Score: <span class="font-medium">{{score.detail.overall_score}}</span> /
+                <span class="font-medium">{{score.detail.maximum_possible_score}}</span>
+                (Missing: {{score.detail.missing_points}})
+            </p>
+        </div>
+
+        <!-- Required Fields -->
+        {{#if score.detail.required_field_scores}}
+            <div class="mt-6">
+                <h2 class="text-lg font-semibold text-gray-800">Required Fields</h2>
+                <ul class="mt-2 space-y-2">
+                    {{#each score.detail.required_field_scores}}
+                        <li class="flex justify-between items-center p-2 bg-gray-50 rounded shadow">
+                            <span class="text-gray-700 font-medium uppercase">{{field}}</span>
+                            <div class="flex flex-col gap-2 justify-end items-end">
+                                <span class="text-gray-500 text-sm">Score: {{score}} / {{max}}</span>
+                                {{#if description}}
+                                    <span class="text-sm text-gray-400 italic">{{description}}</span>
+                                {{/if}}
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
+
+        <!-- Optional Fields -->
+        {{#if score.detail.optional_field_scores}}
+            <div class="mt-6">
+                <h2 class="text-lg font-semibold text-gray-800">Optional Fields</h2>
+                <ul class="mt-2 space-y-2">
+                    {{#each score.detail.optional_field_scores}}
+                        <li class="flex justify-between items-center p-2 bg-gray-50 rounded shadow">
+                            <span class="text-gray-700 font-medium uppercase">{{field}}</span>
+                            <div class="flex flex-col gap-2 justify-end items-end">
+                                <span class="text-gray-500 text-sm">Score: {{score}} / {{max}}</span>
+                                {{#if description}}
+                                    <span class="text-sm text-gray-400 italic">{{description}}</span>
+                                {{/if}}
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
+
+        <!-- Missing Fields -->
+        {{#if score.detail.missing_fields}}
+            <div class="mt-6">
+                <h2 class="text-lg font-semibold text-gray-800">Missing Fields</h2>
+                <ul class="mt-2 ml-4 list-disc list-inside text-sm text-gray-700">
+                    {{#each score.detail.missing_fields}}
+                        <li class="uppercase">{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
+
+        <!-- Subfield Gaps -->
+        {{#if score.detail.subfield_gaps}}
+            <div class="mt-6">
+                <h2 class="text-lg font-semibold text-gray-800">Subfield Gaps</h2>
+                <ul class="mt-2 space-y-2">
+                    {{#each score.detail.subfield_gaps}}
+                        <li class="p-2 bg-gray-50 rounded shadow">
+                            <span class="block text-gray-700 font-medium uppercase">{{subfield}}</span>
+                            <ul class="list-disc list-inside ml-4 mt-1 text-sm text-gray-500">
+                                {{#each missing}}
+                                    <li>{{this}}</li>
+                                {{/each}}
+                            </ul>
+                            {{#if description}}
+                                <p class="text-sm text-gray-400 mt-1 italic">{{description}}</p>
+                            {{/if}}
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
+    </div>
+{{/main}}

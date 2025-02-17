@@ -1,0 +1,593 @@
+{
+	"rubrics": {
+		"software_engineer": {
+			"requiredFields": {
+				"name": 10,
+				"contact": {
+					"email": 5,
+					"phone": 5
+				},
+				"education": 10,
+				"work_experience": 15,
+				"skills": 15
+			},
+			"optionalFields": {
+				"summary": 5,
+				"projects": 10,
+				"open_source_contributions": 8,
+				"certifications": 5,
+				"achievements": 5,
+				"publications": 3,
+				"volunteer_experience": 3,
+				"blogs": 3,
+				"authoring": 2,
+				"patents": 2,
+				"interests_hobbies": 2,
+				"keywords": 3
+			},
+			"subfieldDetails": {
+				"education": {
+					"degree": 3,
+					"field_of_study": 2,
+					"gpa": 1,
+					"location": 1
+				},
+				"work_experience": {
+					"location": 1,
+					"responsibilities": 2
+				},
+				"skills": {
+					"technical": 5,
+					"soft_skills": 2,
+					"other_skills": 2
+				},
+				"projects": {
+					"description": 2,
+					"dates": 1,
+					"technologies": 3,
+					"link": 1
+				},
+				"open_source_contributions": {
+					"description": 2,
+					"dates": 1,
+					"technologies": 3,
+					"link": 1
+				},
+				"publications": {
+					"title": 2,
+					"journal_or_conference": 1,
+					"date": 1,
+					"link": 1
+				},
+				"blogs": {
+					"date": 1,
+					"link": 1,
+					"summary": 1
+				},
+				"authoring": {
+					"publisher": 1,
+					"date": 1,
+					"link": 1,
+					"description": 1
+				},
+				"patents": {
+					"patent_number": 2,
+					"date": 1,
+					"link": 1,
+					"inventors": 2
+				}
+			}
+		},
+
+		"engineering_manager": {
+			"requiredFields": {
+				"name": 10,
+				"contact": {
+					"email": 5,
+					"phone": 5
+				},
+				"education": 10,
+				"work_experience": 15,
+				"skills": 10
+			},
+			"optionalFields": {
+				"summary": 10,
+				"achievements": 8,
+				"projects": 5,
+				"certifications": 5,
+				"volunteer_experience": 5,
+				"open_source_contributions": 3,
+				"publications": 3,
+				"blogs": 3,
+				"authoring": 5,
+				"patents": 2,
+				"interests_hobbies": 2,
+				"keywords": 3
+			},
+			"subfieldDetails": {
+				"education": {
+					"degree": 2,
+					"field_of_study": 2,
+					"gpa": 1,
+					"location": 1
+				},
+				"work_experience": {
+					"location": 1,
+					"responsibilities": 2
+				},
+				"skills": {
+					"technical": 3,
+					"soft_skills": 5,
+					"other_skills": 2
+				},
+				"achievements": {
+					"details": 1,
+					"date": 1,
+					"link": 1
+				},
+				"projects": {
+					"description": 2,
+					"dates": 1,
+					"technologies": 1,
+					"link": 1
+				},
+				"volunteer_experience": {
+					"organization": 1,
+					"role": 2,
+					"dates": 1,
+					"description": 1
+				},
+				"authoring": {
+					"publisher": 2,
+					"date": 1,
+					"link": 1,
+					"description": 1
+				},
+				"open_source_contributions": {
+					"description": 1,
+					"dates": 1,
+					"technologies": 1,
+					"link": 1
+				},
+				"blogs": {
+					"date": 1,
+					"link": 1,
+					"summary": 1
+				},
+				"publications": {
+					"title": 2,
+					"journal_or_conference": 1,
+					"date": 1,
+					"link": 1
+				},
+				"patents": {
+					"patent_number": 1,
+					"date": 1,
+					"link": 1,
+					"inventors": 1
+				}
+			}
+		},
+
+		"product_manager": {
+			"requiredFields": {
+				"name": 10,
+				"contact": {
+					"email": 5,
+					"phone": 5
+				},
+				"education": 10,
+				"work_experience": 15,
+				"skills": 10
+			},
+			"optionalFields": {
+				"summary": 10,
+				"achievements": 5,
+				"projects": 5,
+				"certifications": 5,
+				"open_source_contributions": 2,
+				"publications": 3,
+				"blogs": 3,
+				"authoring": 5,
+				"patents": 2,
+				"volunteer_experience": 3,
+				"interests_hobbies": 2,
+				"keywords": 3
+			},
+			"subfieldDetails": {
+				"education": {
+					"degree": 2,
+					"field_of_study": 2,
+					"gpa": 1,
+					"location": 1
+				},
+				"work_experience": {
+					"location": 1,
+					"responsibilities": 2
+				},
+				"skills": {
+					"technical": 3,
+					"soft_skills": 5,
+					"other_skills": 2
+				},
+				"projects": {
+					"description": 2,
+					"dates": 1,
+					"technologies": 2,
+					"link": 1
+				},
+				"achievements": {
+					"details": 1,
+					"date": 1,
+					"link": 1
+				},
+				"open_source_contributions": {
+					"description": 1,
+					"dates": 1,
+					"technologies": 1,
+					"link": 1
+				},
+				"blogs": {
+					"date": 1,
+					"link": 1,
+					"summary": 1
+				},
+				"authoring": {
+					"publisher": 2,
+					"date": 1,
+					"link": 1,
+					"description": 1
+				},
+				"publications": {
+					"title": 2,
+					"journal_or_conference": 1,
+					"date": 1,
+					"link": 1
+				},
+				"patents": {
+					"patent_number": 1,
+					"date": 1,
+					"link": 1,
+					"inventors": 1
+				}
+			}
+		},
+
+		"program_manager": {
+			"requiredFields": {
+				"name": 10,
+				"contact": {
+					"email": 5,
+					"phone": 5
+				},
+				"education": 10,
+				"work_experience": 15,
+				"skills": 10
+			},
+			"optionalFields": {
+				"summary": 10,
+				"achievements": 5,
+				"projects": 5,
+				"certifications": 5,
+				"open_source_contributions": 3,
+				"publications": 3,
+				"blogs": 3,
+				"authoring": 3,
+				"patents": 1,
+				"volunteer_experience": 5,
+				"interests_hobbies": 2,
+				"keywords": 3
+			},
+			"subfieldDetails": {
+				"education": {
+					"degree": 2,
+					"field_of_study": 2,
+					"gpa": 1,
+					"location": 1
+				},
+				"work_experience": {
+					"location": 1,
+					"responsibilities": 2
+				},
+				"skills": {
+					"technical": 3,
+					"soft_skills": 5,
+					"other_skills": 2
+				},
+				"achievements": {
+					"details": 1,
+					"date": 1,
+					"link": 1
+				},
+				"projects": {
+					"description": 2,
+					"dates": 1,
+					"technologies": 1,
+					"link": 1
+				},
+				"open_source_contributions": {
+					"description": 1,
+					"dates": 1,
+					"technologies": 1,
+					"link": 1
+				},
+				"blogs": {
+					"date": 1,
+					"link": 1,
+					"summary": 1
+				},
+				"authoring": {
+					"publisher": 1,
+					"date": 1,
+					"link": 1,
+					"description": 1
+				},
+				"publications": {
+					"title": 2,
+					"journal_or_conference": 1,
+					"date": 1,
+					"link": 1
+				},
+				"patents": {
+					"patent_number": 1,
+					"date": 1,
+					"link": 1,
+					"inventors": 1
+				}
+			}
+		},
+
+		"solution_architect": {
+			"requiredFields": {
+				"name": 10,
+				"contact": {
+					"email": 5,
+					"phone": 5
+				},
+				"education": 10,
+				"work_experience": 15,
+				"skills": 10
+			},
+			"optionalFields": {
+				"summary": 5,
+				"projects": 8,
+				"achievements": 5,
+				"certifications": 5,
+				"volunteer_experience": 3,
+				"open_source_contributions": 5,
+				"publications": 3,
+				"blogs": 3,
+				"authoring": 3,
+				"patents": 2,
+				"interests_hobbies": 2,
+				"keywords": 3
+			},
+			"subfieldDetails": {
+				"education": {
+					"degree": 3,
+					"field_of_study": 3,
+					"gpa": 1,
+					"location": 1
+				},
+				"work_experience": {
+					"location": 1,
+					"responsibilities": 2
+				},
+				"skills": {
+					"technical": 5,
+					"soft_skills": 3,
+					"other_skills": 2
+				},
+				"projects": {
+					"description": 2,
+					"dates": 1,
+					"technologies": 2,
+					"link": 1
+				},
+				"achievements": {
+					"details": 1,
+					"date": 1,
+					"link": 1
+				},
+				"open_source_contributions": {
+					"description": 2,
+					"dates": 1,
+					"technologies": 2,
+					"link": 1
+				},
+				"blogs": {
+					"date": 1,
+					"link": 1,
+					"summary": 1
+				},
+				"authoring": {
+					"publisher": 1,
+					"date": 1,
+					"link": 1,
+					"description": 1
+				},
+				"publications": {
+					"title": 2,
+					"journal_or_conference": 1,
+					"date": 1,
+					"link": 1
+				},
+				"patents": {
+					"patent_number": 2,
+					"date": 1,
+					"link": 1,
+					"inventors": 1
+				}
+			}
+		},
+
+		"solution_architect_manager": {
+			"requiredFields": {
+				"name": 10,
+				"contact": {
+					"email": 5,
+					"phone": 5
+				},
+				"education": 10,
+				"work_experience": 15,
+				"skills": 10
+			},
+			"optionalFields": {
+				"summary": 10,
+				"achievements": 5,
+				"projects": 5,
+				"certifications": 5,
+				"open_source_contributions": 3,
+				"volunteer_experience": 5,
+				"publications": 3,
+				"blogs": 3,
+				"authoring": 5,
+				"patents": 2,
+				"interests_hobbies": 2,
+				"keywords": 3
+			},
+			"subfieldDetails": {
+				"education": {
+					"degree": 2,
+					"field_of_study": 2,
+					"gpa": 1,
+					"location": 1
+				},
+				"work_experience": {
+					"location": 1,
+					"responsibilities": 3
+				},
+				"skills": {
+					"technical": 4,
+					"soft_skills": 4,
+					"other_skills": 2
+				},
+				"achievements": {
+					"details": 1,
+					"date": 1,
+					"link": 1
+				},
+				"projects": {
+					"description": 2,
+					"dates": 1,
+					"technologies": 2,
+					"link": 1
+				},
+				"open_source_contributions": {
+					"description": 1,
+					"dates": 1,
+					"technologies": 1,
+					"link": 1
+				},
+				"volunteer_experience": {
+					"organization": 1,
+					"role": 2,
+					"dates": 1,
+					"description": 1
+				},
+				"blogs": {
+					"date": 1,
+					"link": 1,
+					"summary": 1
+				},
+				"authoring": {
+					"publisher": 2,
+					"date": 1,
+					"link": 1,
+					"description": 1
+				},
+				"publications": {
+					"title": 2,
+					"journal_or_conference": 1,
+					"date": 1,
+					"link": 1
+				},
+				"patents": {
+					"patent_number": 1,
+					"date": 1,
+					"link": 1,
+					"inventors": 1
+				}
+			}
+		},
+
+		"unknown": {
+			"requiredFields": {
+				"name": 10,
+				"contact": {
+					"email": 5,
+					"phone": 5
+				},
+				"education": 10,
+				"work_experience": 10,
+				"skills": 10
+			},
+			"optionalFields": {
+				"summary": 5,
+				"projects": 5,
+				"certifications": 3,
+				"achievements": 3,
+				"open_source_contributions": 3,
+				"publications": 3,
+				"volunteer_experience": 3,
+				"blogs": 2,
+				"authoring": 2,
+				"patents": 2,
+				"interests_hobbies": 2,
+				"keywords": 2
+			},
+			"subfieldDetails": {
+				"education": {
+					"degree": 2,
+					"field_of_study": 2,
+					"gpa": 1,
+					"location": 1
+				},
+				"work_experience": {
+					"location": 1,
+					"responsibilities": 2
+				},
+				"skills": {
+					"technical": 3,
+					"soft_skills": 3,
+					"other_skills": 2
+				},
+				"projects": {
+					"description": 2,
+					"dates": 1,
+					"technologies": 2,
+					"link": 1
+				},
+				"open_source_contributions": {
+					"description": 1,
+					"dates": 1,
+					"technologies": 1,
+					"link": 1
+				},
+				"blogs": {
+					"date": 1,
+					"link": 1,
+					"summary": 1
+				},
+				"authoring": {
+					"publisher": 1,
+					"date": 1,
+					"link": 1,
+					"description": 1
+				},
+				"publications": {
+					"title": 1,
+					"journal_or_conference": 1,
+					"date": 1,
+					"link": 1
+				},
+				"patents": {
+					"patent_number": 1,
+					"date": 1,
+					"link": 1,
+					"inventors": 1
+				}
+			}
+		}
+	}
+}
