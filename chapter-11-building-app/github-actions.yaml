@@ -1,0 +1,27 @@
+# Example GitHub Actions Workflow for Android
+name: Build Android App
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Build Docker Image
+        run: docker build -t SkillGenie-android-build:latest ./mobile/android
+      - name: Run Build
+        run: Docker run SkillGenie-android-build:latest
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: android-app
+          path: ./mobile/android/app/build/outputs/apk/release/app-release.apk
+  environment:
+    POSTGRES_USER: ${POSTGRES_USER}
+    POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    POSTGRES_DB: ${POSTGRES_DB}

@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+  input_processing:
+    image: SkillGenie-input-processing:latest
+    ports:
+      - "5001:5001"
+    depends_on:
+      - ai_engine
+
+  ai_engine:
+    image: SkillGenie-ai-engine:latest
+    ports:
+      - "5002:5002"
+
+  lesson_management:
+    image: SkillGenie-lesson-management:latest
+    ports:
+      - "5003:5003"
+    depends_on:
+      - data_storage
+
+  evaluation_feedback:
+    image: SkillGenie-evaluation-feedback:latest
+    ports:
+      - "5004:5004"
+    depends_on:
+      - ai_engine
+      - data_storage
+
+  data_storage:
+    image: postgres:13
+  
+  environment:
+        POSTGRES_USER: user
+        POSTGRES_PASSWORD: password
+        POSTGRES_DB: SkillGenie_db
+      ports:
+        - "5432:5432"
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+
+  volumes:
+    postgres_data:
