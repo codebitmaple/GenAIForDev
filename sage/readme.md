@@ -75,7 +75,7 @@ We welcome contributions! Please follow these steps:
 5. Open a Pull Request
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the limited License - see the root folder for details.
 
 ## Contact
 For questions or suggestions, open an issue or reach out via email at `support@codebitmaple.com`.
