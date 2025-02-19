@@ -51,7 +51,7 @@ print(code_snippet)
 
 For more examples and detailed usage, refer to the [documentation](docs/USAGE.md).
 
-# Packaging and Deploying Sage's backend service
+# Packaging and Deploying Sage (SkillGenie) backend service
 
 This guide provides step-by-step instructions for packaging and deploying your Rust backend service using Docker. The
 application requires an environment file (.env.prod) to run, which contains connection strings for Redis, MongoDB, and
