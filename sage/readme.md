@@ -1,4 +1,4 @@
-# Sage - AI-Powered Learning Assistant
+# SkillGenine (Sage) - AI-Powered Learning Assistant
 
 ## Overview
 Sage is a Generative AI-powered learning assistant designed to help students with personalized tutoring. It leverages advanced AI models to provide multimodal (text, voice, and image) input support, interactive learning paths, and adaptive feedback loops to enhance the learning experience.
