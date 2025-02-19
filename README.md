@@ -1,6 +1,7 @@
 # GenAIForDev
 
-**GenAIForDev** aims to empower developers by incorporating Generative AI into their workflows. This project provides tools and examples to help you leverage AI in software development.
+**GenAIForDev** aims to empower developers by incorporating Generative AI into their workflows. This project provides
+tools and examples to help you leverage AI in software development.
 
 ## Features
 
@@ -14,12 +15,14 @@
 To get started with GenAIForDev:
 
 1. **Clone the Repository**:
+
    ```bash
    git clone https://github.com/codebitmaple/GenAIForDev.git
    cd GenAIForDev
    ```
 
 2. **Checkout the `bitmaple` Branch**:
+
    ```bash
    git checkout bitmaple
    ```
@@ -47,6 +50,144 @@ print(code_snippet)
 ```
 
 For more examples and detailed usage, refer to the [documentation](docs/USAGE.md).
+
+# Packaging and Deploying Sage's backend service
+
+This guide provides step-by-step instructions for packaging and deploying your Rust backend service using Docker. The
+application requires an environment file (.env.prod) to run, which contains connection strings for Redis, MongoDB, and
+OpenAI keys.
+
+---
+
+## Prerequisites
+
+Before proceeding, ensure you have the following installed on your system:
+
+- **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
+- **Rust Toolchain**: [Install Rust](https://www.rust-lang.org/tools/install)
+- **Git** (optional, if cloning the repository)
+
+---
+
+## Step 1: Prepare Your Environment File
+
+The application requires a .env.prod file to store sensitive configuration values. Create this file in the root
+directory of your project with the following content:
+
+```
+# .env.prod
+
+# Redis Connection String
+REDIS_URL=redis://<username>:<password>@<host>:<port>/<db>
+
+# MongoDB Connection String
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster-url>/<database>?retryWrites=true&w=majority
+
+# OpenAI API Key
+OPENAI_API_KEY=<your-openai-api-key>
+
+# .gitignore
+.env.prod
+```
+
+## Step 2: Write a Dockerfile
+
+```
+# Dockerfile
+
+# Stage 1: Build the Rust application
+
+FROM rust:1.73 as builder
+
+# Set the working directory inside the container
+
+WORKDIR /app
+
+# Copy the Cargo.toml and Cargo.lock files
+
+COPY Cargo.toml Cargo.lock ./
+
+# Copy the source code
+
+COPY src ./src
+
+# Build the application in release mode
+
+RUN cargo build --release
+
+# Stage 2: Create a minimal runtime image
+
+FROM debian:bullseye-slim
+
+# Install necessary dependencies
+
+RUN apt-get update && apt-get install -y libssl-dev && rm -rf /var/lib/apt/lists/\*
+
+# Set the working directory
+
+WORKDIR /app
+
+# Copy the compiled binary from the builder stage
+
+COPY --from=builder /app/target/release/<your-app-name> .
+
+# Copy the environment file (ensure users add their own .env.prod)
+
+COPY .env.prod .env
+
+# Expose the port your application listens on
+
+EXPOSE 8080
+
+# Command to run the application
+
+CMD ["./<your-app-name>"]
+
+```
+
+## Step 3: Build the Docker Image
+
+Run the following command to build the Docker image:
+
+```
+
+docker build -t <your-image-name> .
+
+```
+
+Replace <your-image-name> with a name for your Docker image (e.g., rust-backend-service).
+
+## Step 4: Run the Docker Container
+
+Once the image is built, you can run the container using the following command:
+
+```
+
+docker run -d --name <container-name> -p 8080:8080 <your-image-name>
+
+```
+
+Replace <container-name> with a name for your running container. Replace <your-image-name> with the name of the image
+you built in Step 3. This command maps port 8080 on your host machine to port 8080 in the container, where your Rust
+backend service is running.
+
+## Step 5: Verify the Deployment
+
+To verify that your service is running correctly:
+
+Check the logs of the running container:
+
+```
+
+docker logs <container-name>
+
+```
+
+If everything is set up correctly, your Rust backend service should respond as expected.
+
+Access your service in a web browser or via an HTTP client like curl:
+
+curl http://localhost:8080
 
 ## Contributing
 
