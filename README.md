@@ -12,45 +12,6 @@ tools and examples to help you leverage AI in software development.
 
 ## Installation
 
-To get started with GenAIForDev:
-
-1. **Clone the Repository**:
-
-   ```bash
-   git clone https://github.com/codebitmaple/GenAIForDev.git
-   cd GenAIForDev
-   ```
-
-2. **Checkout the `bitmaple` Branch**:
-
-   ```bash
-   git checkout bitmaple
-   ```
-
-3. **Install Dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## Usage
-
-Here's an example of generating code from a description:
-
-```python
-from genai.code_generator import CodeGenerator
-
-# Initialize the code generator
-generator = CodeGenerator()
-
-# Generate code based on a description
-description = "Create a Python function that calculates the factorial of a number."
-code_snippet = generator.generate_code(description)
-
-print(code_snippet)
-```
-
-For more examples and detailed usage, refer to the [documentation](docs/USAGE.md).
-
 # Packaging and Deploying Sage (SkillGenie) backend service
 
 This guide provides step-by-step instructions for packaging and deploying your Rust backend service using Docker. The
