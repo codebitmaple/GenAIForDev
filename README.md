@@ -3,6 +3,10 @@
 **GenAIForDev** aims to empower developers by incorporating Generative AI into their workflows. This project provides
 tools and examples to help you leverage AI in software development.
 
+**Book Link**: 
+ - Amazon : https://www.amazon.com/gp/product/B0DYZV9X9N
+ - BitMaple - https://bitmaple.com/#book-publishing-details
+
 ## Features
 
 - **Code Generation**: Generate code snippets from natural language descriptions.
