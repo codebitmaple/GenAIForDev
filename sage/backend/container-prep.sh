@@ -1,6 +1,6 @@
 # RESUMES_TAG=$(git rev-parse --short HEAD)
-AWS_REGION=us-west-2
-AWS_ACCOUNT_ID=579989334487
+AWS_REGION=[your-AWS-region]
+AWS_ACCOUNT_ID=[your-AWS-account-id]
 
 ## Step 1: Build and push docker images to ECR
 docker build -t definite:latest .
